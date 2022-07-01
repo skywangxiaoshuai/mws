@@ -36,10 +36,10 @@ module Mws
 
     def request(method, path, params, body, overrides)
       query = Query.new({
-        Action: overrides[:action],
-        Version: overrides[:version],
-        Merchant: @merchant,
-        AWSAccessKeyId: @access,
+        action: overrides[:action],
+        version: overrides[:version],
+        merchant: @merchant,
+        access: @access,
         list_pattern: overrides.delete(:list_pattern)
       }.merge(params))
       signer = Signer.new method: method, host: @host, path: path, secret: @secret
